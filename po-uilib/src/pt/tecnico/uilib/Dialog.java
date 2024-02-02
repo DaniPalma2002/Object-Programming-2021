@@ -27,7 +27,8 @@ public class Dialog implements AutoCloseable {
   /** Singleton constructor (private). */
   private Dialog() {
     try {
-      _backend = switch (System.getProperty(ACTION_CHANNEL, CHANNEL_TEXT)) {
+      // change channel by setting the property "ui" to "swing", "newswing" or "text"
+      _backend = switch (System.getProperty(ACTION_CHANNEL, CHANNEL_NEW_SWING)) {
       case CHANNEL_SWING -> new SwingInteraction();
       case CHANNEL_NEW_SWING -> new NewSwingInteraction();
       case CHANNEL_TEXT -> new TextInteraction();
